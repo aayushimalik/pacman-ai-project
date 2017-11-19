@@ -82,7 +82,7 @@ class Model:
 			current_state = current_state.reshape(1,shape[0],shape[1],shape[2])
 			next_state = next_state.reshape(1,shape[0],shape[1],shape[2])
 
-			target = reward + self.discount + np.amax(self.model.predict(next_state)[0])
+			target = reward + self.discount * np.amax(self.model.predict(next_state)[0])
 			
 			target_f = self.model.predict(current_state)
 			target_f[0][action] = target
